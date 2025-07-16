@@ -1,15 +1,10 @@
 services:
   - type: web
     name: medissaclinic
-    env: php
-    branch: main
-    buildCommand: |
-      composer install --no-dev --optimize-autoloader
-      php artisan config:cache
-      php artisan route:cache
-      php artisan view:cache
-    startCommand: php artisan serve --host=0.0.0.0 --port=10000
+    env: docker
     plan: free
+    branch: main
+    dockerfilePath: Dockerfile
     envVars:
       - key: APP_ENV
         value: production
